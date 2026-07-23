@@ -1,9 +1,12 @@
 import js from '@eslint/js';
 import { defineConfig, globalIgnores } from 'eslint/config';
+import fsdImport from 'eslint-plugin-fsd-import';
 import tseslint from 'typescript-eslint';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
+
+const fsdOptions = { alias: '@', rootDir: 'src' };
 
 export default defineConfig([
   globalIgnores([
@@ -68,6 +71,20 @@ export default defineConfig([
           },
         },
       ],
+    },
+  },
+
+  {
+    name: '@deep-work/eslint-config/fsd',
+    files: ['**/*.{ts,tsx}'],
+    plugins: {
+      'fsd-import': fsdImport,
+    },
+
+    rules: {
+      'fsd-import/layer-imports': ['error', fsdOptions],
+      'fsd-import/public-api-imports': ['error', fsdOptions],
+      'fsd-import/fsd-relative-path': ['error', fsdOptions],
     },
   },
 
