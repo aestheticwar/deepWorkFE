@@ -1,0 +1,26 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+build
+coverage
+
+# Tool caches
+.turbo
+.cache
+
+# TypeScript
+*.tsbuildinfo
+
+# Package manager
+pnpm-lock.yaml
+
+# Generated files
+apps/**/src/generated
+packages/**/src/generated
+
+# Environment files
+.env
+.env.*
+!.env.example
